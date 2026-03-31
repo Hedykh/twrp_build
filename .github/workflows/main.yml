@@ -1,0 +1,21 @@
+name: Recovery Builder
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-20.04
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v3
+
+    - name: Recovery Build Action
+      uses: frp-reborn/twrp-builder@main
+      with:
+        recipe: 'omni'
+        device_tree_url: 'https://github.com/Hedykh/twrp_build'
+        device_tree_branch: 'main'
+        device_name: 'mtk_phone'
+        makefile_name: 'omni_mtk_phone'
+        build_target: 'recovery'
